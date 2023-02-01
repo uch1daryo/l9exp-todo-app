@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('todos', function () {});
+Route::get('todos/create', function () {});
+Route::post('todos', function () {});
+Route::get('todos/{todo_id}', function () {});
+Route::get('todos/{todo_id}/edit', function () {});
+Route::put('todos/{todo_id}', function () {});
+Route::delete('todos/{todo_id}', function () {});
