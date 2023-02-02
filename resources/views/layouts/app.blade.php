@@ -7,6 +7,14 @@
   <title>{{ config('app.name') }} - @yield('title')</title>
 </head>
 <body>
+  <nav class="navbar navbar-light bg-light mb-3">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Navbar</span>
+    </div>
+  </nav>
+  <main class="container-fluid">
+    @yield('content')
+  </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
