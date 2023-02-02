@@ -17,10 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('todos', function () {});
-Route::get('todos/create', function () {});
+Route::get('todos', function () {
+    return view('todos.index');
+});
+Route::get('todos/create', function () {
+    return view('todos.create');
+});
 Route::post('todos', function () {});
-Route::get('todos/{todo_id}', function () {});
-Route::get('todos/{todo_id}/edit', function () {});
+Route::get('todos/{todo_id}', function () {
+    return view('todos.show');
+});
+Route::get('todos/{todo_id}/edit', function () {
+    return view('todos.edit');
+});
 Route::put('todos/{todo_id}', function () {});
 Route::delete('todos/{todo_id}', function () {});
