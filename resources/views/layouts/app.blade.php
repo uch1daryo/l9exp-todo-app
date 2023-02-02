@@ -9,7 +9,7 @@
 <body>
   <nav class="navbar navbar-light bg-light mb-3">
     <div class="container-fluid">
-      <span class="navbar-brand mb-0 h1">Navbar</span>
+      <span class="navbar-brand mb-0 h1">{{ config('app.name') }}</span>
     </div>
   </nav>
   <main class="container-fluid">
