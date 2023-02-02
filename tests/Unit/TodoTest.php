@@ -16,13 +16,13 @@ class TodoTest extends TestCase
         $this->artisan('db:seed', ['--class' => 'TestDatabaseSeeder']);
     }
 
-    public function testCanGetThreeRecordsFromTodoTable()
+    public function testCanSelectThreeRecordsFromTodosTable()
     {
         $todos = Todo::all();
         $this->assertEquals($todos->count(), 3);
     }
 
-    public function testCanGetCorrectRecordDataFromTodoTable()
+    public function testCanSelectCorrectRecordDataFromTodosTable()
     {
         $todos = Todo::all();
         $todosArray = $todos->toArray();
