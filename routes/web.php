@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,18 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('todos', function () {
-    return view('todos.index');
+Route::controller(TodoController::class)->group(function () {
+    Route::get('todos', 'index');
+    Route::get('todos/create', 'create');
+    Route::post('todos', 'store');
+    Route::get('todos/{todo_id}', 'show');
+    Route::get('todos/{todo_id}/edit', 'edit');
+    Route::put('todos/{todo_id}', 'update');
+    Route::delete('todos/{todo_id}', 'destroy');
 });
-Route::get('todos/create', function () {
-    return view('todos.create');
-});
-Route::post('todos', function () {});
-Route::get('todos/{todo_id}', function () {
-    return view('todos.show');
-});
-Route::get('todos/{todo_id}/edit', function () {
-    return view('todos.edit');
-});
-Route::put('todos/{todo_id}', function () {});
-Route::delete('todos/{todo_id}', function () {});
