@@ -20,8 +20,11 @@ class TodoTest extends TestCase
 
     public function testCanAccessTodosWithPostMethod()
     {
-        $response = $this->post('todos');
-        $response->assertStatus(200);
+        $todo = [
+            'title' => 'TODOのタイトル。',
+        ];
+        $response = $this->post('todos', $todo);
+        $response->assertStatus(302);
     }
 
     public function testCanAccessTodoWithGetMethod()
