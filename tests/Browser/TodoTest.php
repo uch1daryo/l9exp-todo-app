@@ -29,7 +29,17 @@ class TodoTest extends DuskTestCase
                     ->assertSee('詳細')
                     ->assertSee('編集')
                     ->assertSee('削除')
+                    ->assertSee('TODO 新規登録')
                     ->screenshot('todos_index');
+        });
+    }
+
+    public function testCanMoveFromIndexPageToCreatePage()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('todos')
+                    ->clickLink('TODO 新規登録')
+                    ->assertPathIs('/todos/create');
         });
     }
 
@@ -38,7 +48,21 @@ class TodoTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('todos/create')
                     ->assertTitleContains('create')
+                    ->assertSee('TODO 新規登録')
+                    ->assertSee('タイトル')
+                    ->assertSee('登録')
                     ->screenshot('todos_create');
+        });
+    }
+
+    public function testCanRegisterAtCreatePage()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('todos/create')
+                    ->type('title', '何かしらのやるべきこと')
+                    ->press('登録')
+                    ->assertSee('何かしらのやるべきこと')
+                    ->screenshot('register_todo');
         });
     }
 

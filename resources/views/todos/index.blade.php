@@ -2,12 +2,21 @@
 @section('title', 'index')
 @section('content')
 <div class="row">
+  <div class="col-12 mb-3">
+    <a href="{{ url('todos/create') }}" class="btn btn-primary">TODO 新規登録</a>
+  </div>
   <div class="col-12">
     <div class="card">
       <div class="card-header">
         TODO 一覧
       </div>
       <div class="card-body">
+        @if (session('status'))
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+          {{ session('status') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
         <table class="table">
           <thead>
             <tr>
@@ -21,7 +30,7 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($todosArray as $todo)
+            @foreach ($todosArray as $todo)
             <tr>
               <td>{{ $todo['id'] }}</td>
               <td>{{ $todo['title'] }}</td>
