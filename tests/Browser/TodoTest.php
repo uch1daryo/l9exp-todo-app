@@ -16,7 +16,7 @@ class TodoTest extends DuskTestCase
         $this->artisan('db:seed', ['--class' => 'TestDatabaseSeeder']);
     }
 
-    public function testCanSeeTodosIndexPage(): void
+    public function testCanSeeTodosIndexPage()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('todos')
@@ -33,7 +33,7 @@ class TodoTest extends DuskTestCase
         });
     }
 
-    public function testCanSeeTodosCreatePage(): void
+    public function testCanSeeTodosCreatePage()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('todos/create')
@@ -42,7 +42,7 @@ class TodoTest extends DuskTestCase
         });
     }
 
-    public function testCanSeeTodosShowPage(): void
+    public function testCanSeeTodosShowPage()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('todos/1')
@@ -51,7 +51,7 @@ class TodoTest extends DuskTestCase
         });
     }
 
-    public function testCanSeeTodosEditPage(): void
+    public function testCanSeeTodosEditPage()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('todos/1/edit')
