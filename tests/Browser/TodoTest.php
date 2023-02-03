@@ -21,6 +21,7 @@ class TodoTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('todos')
                     ->assertTitleContains('index')
+                    ->assertSee('TODO 一覧')
                     ->assertSee('ID')
                     ->assertSee('タイトル')
                     ->assertSee('作成')
