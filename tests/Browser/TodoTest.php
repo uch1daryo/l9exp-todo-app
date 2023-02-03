@@ -8,6 +8,14 @@ use Tests\DuskTestCase;
 
 class TodoTest extends DuskTestCase
 {
+    use DatabaseMigrations;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->artisan('db:seed', ['--class' => 'TestDatabaseSeeder']);
+    }
+
     public function testCanSeeTodosIndexPage(): void
     {
         $this->browse(function (Browser $browser) {
