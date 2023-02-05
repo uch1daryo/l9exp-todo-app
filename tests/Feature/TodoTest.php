@@ -2,10 +2,20 @@
 
 namespace Tests\Feature;
 
+use App\Models\Todo;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class TodoTest extends TestCase
 {
+    use RefreshDatabase;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->artisan('db:seed', ['--class' => 'TestDatabaseSeeder']);
+    }
+
     public function testCanAccessTodosWithGetMethod()
     {
         $response = $this->get('todos');
@@ -29,7 +39,11 @@ class TodoTest extends TestCase
 
     public function testCanAccessTodoWithGetMethod()
     {
-        $response = $this->get('todos/1');
+        $todos = Todo::all();
+        $todosArray = $todos->toArray();
+        $todo = $todosArray[0];
+        $endpoint = 'todos/' . $todo['id'];
+        $response = $this->get($endpoint);
         $response->assertStatus(200);
     }
 
