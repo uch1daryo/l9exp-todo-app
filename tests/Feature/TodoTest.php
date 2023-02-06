@@ -59,7 +59,14 @@ class TodoTest extends TestCase
 
     public function testCanAccessTodoWithPutMethod()
     {
-        $response = $this->put('todos/1');
+        $todos = Todo::all();
+        $todosArray = $todos->toArray();
+        $todo = $todosArray[0];
+        $endpoint = 'todos/' . $todo['id'];
+        $params = [
+            'title' => 'TODOのタイトル。',
+        ];
+        $response = $this->get($endpoint, $params);
         $response->assertStatus(200);
     }
 

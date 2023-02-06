@@ -80,7 +80,14 @@ class TodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $todo = Todo::find($id);
+        $todo->title = $request->input('title');
+        $todo->save();
+
+        return redirect('todos')->with(
+            'status',
+            $todo->title . 'を更新しました'
+        );
     }
 
     /**
