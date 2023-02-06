@@ -49,7 +49,11 @@ class TodoTest extends TestCase
 
     public function testCanAccessTodoEditWithGetMethod()
     {
-        $response = $this->get('todos/1/edit');
+        $todos = Todo::all();
+        $todosArray = $todos->toArray();
+        $todo = $todosArray[0];
+        $endpoint = 'todos/' . $todo['id'] . '/edit';
+        $response = $this->get($endpoint);
         $response->assertStatus(200);
     }
 
